@@ -1,5 +1,4 @@
 * {
-    background-color: #303030;
     font-family: Arial, serif;
 }
 h1, a, li {
@@ -9,8 +8,12 @@ h1, a, li {
     align-items: center;
     transition: all 0.5s ease 0s;
 }
-.navBar-link:hover {
-    color: #FFAA00 ;
+h2 {
+    color: #303030;
+    text-decoration: none;
+    font-weight: 500;
+    align-items: center;
+    transition: all 0.5s ease 0s;
 }
 header {
     display: flex;
@@ -25,6 +28,9 @@ header {
     /*border-right-width: thick;*/
     max-height: 3em;
 }
+.navBar-link:hover {
+    color: #FFAA00 ;
+}
 .nav-content {
     list-style: none;
 }
@@ -32,7 +38,47 @@ header {
     display: inline-block;
     padding: 0 1em;
 }
+.sidenav {
+    color: #FFAA00 ;
+    position: fixed;
+    float: left;
+    margin-left: -2em;
+    margin-top: 4em;
+    padding-left: 2em;
+}
+.about_box {
+    padding-top: 0.01em;
+    padding-left: 5px;
+    /*padding-bottom: 5px;*/
+    /*height: 50px;*/
+    /*width: 30%;*/
+    margin-right: 20em;
+    /*margin-left: 6em;*/
+    background-color: orange;
+}
+.portfolio_box {
+    padding-top: 0.01em;
+    padding-left: 5px;
+    /*padding-bottom: 5px;*/
+    /*height: 50px;*/
+    /*width: 30%;*/
+    margin-right: 20em;
+    /*margin-left: 6em;*/
+    background-color: orange;
+}
+.resume_box {
+    padding-top: 0.01em;
+    padding-left: 5px;
+    /*padding-bottom: 5px;*/
+    /*height: 50px;*/
+    /*width: 30%;*/
+    margin-right: 20em;
+    /*margin-left: 6em;*/
+    background-color: orange;
+}
 
 main {
-    margin: 3em;
+    margin-top: 3em;
+    margin-left: 10em;
+/*    This margin will change once animation added */
 }
