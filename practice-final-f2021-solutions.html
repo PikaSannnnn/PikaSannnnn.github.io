@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Practice Final F2021</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta keywords="">
+<style>
+
+.CodeMirror {
+  height: inherit;
+}
+
+.doc-embed {
+  padding: 0;
+  border: 1px solid #41454E;
+  border-radius: 3px;
+  margin-bottom: 4px;
+
+  color: #fff;
+
+  .doc-embed-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .collapse-trigger {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    padding-left: 4px;
+    cursor: pointer;
+    overflow: hidden;
+
+    .threadline {
+      flex: 1 1 auto;
+      width: 1px;
+      background: #27282B;
+      transition: 0.2s
+      display: block;
+      margin: auto;
+    }
+
+    &:hover .threadline {
+      width: 1px;
+      background: #E6E6E6
+    }
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    fill: currentColor;
+  }
+
+  &.collapsed {
+    .collapse-trigger  {
+      .threadline {
+        display: none;
+      }
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    .doc-embed-content {
+      display: none;
+    }
+  }
+
+  .embed-body {
+    min-width: 0;
+  }
+
+  .doc-embed-header {
+    display: flex;
+    align-items: center;
+
+    & > div {
+      flex: 1;
+      min-width: 0;
+      padding: 4px 8px 4px 4px;
+    }
+
+    h1, a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+    }
+
+    a > svg {
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+
+  .doc-embed-content {
+    padding: 0 8px;
+  }
+}
+
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+line-height: 1.6;
+font-family: Lato, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+font-size: 15px;
+line-height: 1.6;
+word-wrap: break-word;
+
+.dark, .solarizedDark {
+  color: #FFF;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+  a:hover {
+  outline-width: 0;
+}
+
+strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border-style: none;
+}
+
+code,
+  kbd,
+  pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+input {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+[type='checkbox'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+hr:before {
+  content: '';
+  display: table;
+}
+
+hr:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+  th {
+  padding: 0;
+}
+
+details summary {
+  cursor: pointer;
+}
+
+h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h1,
+  h2 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h3,
+  h4 {
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h5,
+  h6 {
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ol,
+  ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+ol ol,
+  ul ol {
+  list-style-type: lower-roman;
+}
+
+ol ol ol,
+  ol ul ol,
+  ul ol ol,
+  ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+dd {
+  margin-left: 0;
+}
+
+code,
+  pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  font-size: 12px;
+}
+
+pre.CodeMirror,
+  code.CodeMirror {
+  height: auto;
+}
+
+pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+&:before {
+  content: '';
+  display: table;
+}
+
+&:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+> :first-child {
+  margin-top: 0 !important;
+}
+
+> :last-child {
+  margin-bottom: 0 !important;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote,
+  dl,
+  ol,
+  p,
+  pre,
+  table,
+  ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 0.25em solid #e1e4e8;
+  color: #999999;
+  padding: 0 1em;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  line-height: 1.25;
+  margin: 8px 0;
+}
+
+h1 {
+  margin-top: 32px;
+  font-weight: 600;
+  font-size: 1.953em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 0.875em;
+}
+
+h6 {
+  font-weight: 400;
+  color: #6a737d;
+  font-size: 0.85em;
+}
+
+ol,
+  ul {
+  padding-left: 2em;
+}
+ol ol,
+  ol ul,
+  ul ol,
+  ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+li {
+  word-wrap: break-all;
+}
+
+li > p {
+  margin-top: 16px;
+
+&:first-child {
+    margin-top: 0;
+  }
+&:last-child {
+    margin-bottom: 0;
+  }
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table td,
+  table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #c6cbd1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+  box-sizing: content-box;
+}
+
+img[align='right'] {
+  padding-left: 20px;
+}
+
+img[align='left'] {
+  padding-right: 20px;
+}
+
+code {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: 0.2em 0.4em;
+}
+
+p code,
+  li code
+{
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre > code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.highlight {
+  margin-bottom: 16px;
+}
+
+.highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.highlight pre,
+  pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+:checked + .radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.task-list-item {
+  position: relative;
+  list-style-type: none;
+  height: fit-content;
+  min-height: 25px;
+}
+
+.task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+
+.task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.task-list-item input[type=checkbox] {
+  position: absolute;
+  top: 6px;
+}
+
+hr {
+  border-bottom-color: #eee;
+}
+
+.dark p code,
+.dark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #5580DC;
+}
+
+.auto p code,
+.auto li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.light p code,
+.light li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.sepia p code,
+.sepia li code
+{
+  background-color: #efe8d6;
+  border-color: rgba(0,0,0,0.26);
+  color: #F77942;
+}
+
+.solarizedDark p code,
+.solarizedDark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #36abe3;
+}
+</style>
+<link rel="stylesheet" href="https://boostnote.io/app/codemirror/theme/codemirror.css">
+<link rel="stylesheet" href="https://boostnote.io/app/katex/katex.min.css">
+<link rel="stylesheet" href="https://boostnote.io/app/remark-admonitions/classic.css">
+<link rel="stylesheet" href="https://boostnote.io/app/codemirror/theme/material-darker.css">
+</head>
+<body>
+<h1>CS10A Practice Final F2021</h1>
+<p>There will be a grading format provided for this practice test. The test will not count towards any grade for any class or SI, but it will give you an understanding of your current score and reveal which concepts require more review.<br>
+Bonus questions will be clearly marked and will focus on slightly more obscure, but important concepts. Only do these problems if time allows.</p>
+<h3>Multiple Choice (18 points, 2 bonus points)</h3>
+<blockquote>
+<p>22 Minutes</p>
+</blockquote>
+<div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon">ℹ️</span>note</h5></div><div class="admonition-content"><p>For each of the following problems, read the questions <strong>carefully</strong>. Consider all possible inputs, including edge cases, and choose the answer that is the <strong>most</strong> correct.<br>
+Each question is 1 point.</p></div></div>
+<ol>
+<li>C++ is an example of what type of language?<br>
+a. machine language<br>
+b. assembly language<br>
+c. low-level language<br>
+d. high-level language  *  </li>
+<li>Which of these is a valid variable name?<br>
+a. 3kicks<br>
+b. _assemble  *<br>
+c. $ony<br>
+d. none of the above</li>
+</ol>
+<p><strong>Use this code for questions 3 and 4</strong></p>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="  vector<int> nums(5);
+  for (int i = 0; i < 15; i++) {
+    nums.push_back(nums.at(i) + (i * 5));
+  }
+"><code class="language-c++"><span>  </span><span class="cm-variable">vector</span><span class="cm-operator">&#x3C;</span><span class="cm-type">int</span><span class="cm-operator">></span><span> </span><span class="cm-def">nums</span><span>(</span><span class="cm-number">5</span><span>)</span><span>;</span><span>
+</span><span>  </span><span class="cm-keyword">for</span><span> </span><span>(</span><span class="cm-type">int</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-number">0</span><span>;</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-operator">&#x3C;</span><span> </span><span class="cm-number">15</span><span>;</span><span> </span><span class="cm-variable">i</span><span class="cm-operator">++</span><span>)</span><span> </span><span>{</span><span>
+</span><span>    </span><span class="cm-variable">nums</span><span>.</span><span class="cm-variable">push_back</span><span>(</span><span class="cm-variable">nums</span><span>.</span><span class="cm-variable">at</span><span>(</span><span class="cm-variable">i</span><span>)</span><span> </span><span class="cm-operator">+</span><span> </span><span>(</span><span class="cm-variable">i</span><span> </span><span class="cm-operator">*</span><span> </span><span class="cm-number">5</span><span>)</span><span>)</span><span>;</span><span>
+</span><span>  </span><span>}</span><span>
+</span></code></pre>
+<ol start="3">
+<li>
+<p>What is the size of <code>nums</code> after the for loop?<br>
+a. 5<br>
+b. 10<br>
+c. 15<br>
+d. 20  *</p>
+</li>
+<li>
+<p>What is the value of <code>nums.at(2)</code>?<br>
+a. 0  *<br>
+b. 2<br>
+c. 4<br>
+d. 6  </p>
+</li>
+</ol>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="int x = 40;
+double y = 3;
+
+x = x / y;
+"><code class="language-c++"><span class="cm-type">int</span><span> </span><span class="cm-variable">x</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-number">40</span><span>;</span><span>
+</span><span class="cm-type">double</span><span> </span><span class="cm-variable">y</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-number">3</span><span>;</span><span>
+</span><span>
+</span><span class="cm-variable">x</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">x</span><span> </span><span class="cm-operator">/</span><span> </span><span class="cm-variable">y</span><span>;</span><span>
+</span></code></pre>
+<ol start="5">
+<li>
+<p>Given the above code, what is the final value of x?<br>
+a. 13.33<br>
+b. 13  *<br>
+c. 14<br>
+d. 12  </p>
+</li>
+<li>
+<p>Which of the following is the correct way to declare a vector <code>x</code> of strings?<br>
+a. <code>string&#x3C;vector> x</code><br>
+b. <code>vector&#x3C;x> string</code><br>
+c. <code>vector&#x3C;string> x</code>  *<br>
+d. <code>vector&#x3C;char> x</code>  </p>
+</li>
+</ol>
+<blockquote>
+<p><strong>BONUS 1:</strong></p>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="int main() {  // A
+  if (...) {  // B
+    if (...) {  // C
+      int x;
+      if (...) {  // D
+         if (...) { // E
+         }
+         else {  // F
+         }
+      }
+      else {  // G
+      }
+    }
+    else {  // H
+    }
+  }
+}
+"><code class="language-c++"><span class="cm-type">int</span><span> </span><span class="cm-def">main</span><span>(</span><span>)</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// A</span><span>
+</span><span>  </span><span class="cm-keyword">if</span><span> </span><span>(</span><span>.</span><span>.</span><span>.</span><span>)</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// B</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span>(</span><span>.</span><span>.</span><span>.</span><span>)</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// C</span><span>
+</span><span>      </span><span class="cm-type">int</span><span> </span><span class="cm-variable">x</span><span>;</span><span>
+</span><span>      </span><span class="cm-keyword">if</span><span> </span><span>(</span><span>.</span><span>.</span><span>.</span><span>)</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// D</span><span>
+</span><span>         </span><span class="cm-keyword">if</span><span> </span><span>(</span><span>.</span><span>.</span><span>.</span><span>)</span><span> </span><span>{</span><span> </span><span class="cm-comment">// E</span><span>
+</span><span>         </span><span>}</span><span>
+</span><span>         </span><span class="cm-keyword">else</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// F</span><span>
+</span><span>         </span><span>}</span><span>
+</span><span>      </span><span>}</span><span>
+</span><span>      </span><span class="cm-keyword">else</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// G</span><span>
+</span><span>      </span><span>}</span><span>
+</span><span>    </span><span>}</span><span>
+</span><span>    </span><span class="cm-keyword">else</span><span> </span><span>{</span><span>  </span><span class="cm-comment">// H</span><span>
+</span><span>    </span><span>}</span><span>
+</span><span>  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<p>Given the above code, which of the following sets (groups) of if statements have access to <code>int x</code>?<br>
+a. {A, B, C, D, E, F, G, H}<br>
+b. {A, B, C, H}<br>
+c. {C, D, E, F, G, H}<br>
+d. {C, D, E, F, G}  *  </p>
+</blockquote>
+<p><strong>Use this code for questions 7 - 10</strong></p>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="/* A */ ShiftAllLeft(/* B */ sentence, int shiftAmt) {
+  ...  // shifts every word in the sentence to the left
+       // on the alphabet (i.e. C -> A, if shiftAmt = 2)
+}
+/* C */ SentenceSize(/* D */ sentence) {
+  ...  // finds the size of the sentence
+}
+
+int main() {
+  vector<string> sentence; 
+  ...  // getting input from user
+}
+"><code class="language-c++"><span class="cm-comment">/* A */</span><span> </span><span class="cm-variable">ShiftAllLeft</span><span>(</span><span class="cm-comment">/* B */</span><span> </span><span class="cm-variable">sentence</span><span>,</span><span> </span><span class="cm-type">int</span><span> </span><span class="cm-variable">shiftAmt</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span>.</span><span>.</span><span>.</span><span>  </span><span class="cm-comment">// shifts every word in the sentence to the left</span><span>
+</span><span>       </span><span class="cm-comment">// on the alphabet (i.e. C -> A, if shiftAmt = 2)</span><span>
+</span><span>}</span><span>
+</span><span class="cm-comment">/* C */</span><span> </span><span class="cm-variable">SentenceSize</span><span>(</span><span class="cm-comment">/* D */</span><span> </span><span class="cm-variable">sentence</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span>.</span><span>.</span><span>.</span><span>  </span><span class="cm-comment">// finds the size of the sentence</span><span>
+</span><span>}</span><span>
+</span><span>
+</span><span class="cm-type">int</span><span> </span><span class="cm-def">main</span><span>(</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span class="cm-variable">vector</span><span class="cm-operator">&#x3C;</span><span class="cm-variable">string</span><span class="cm-operator">></span><span> </span><span class="cm-variable">sentence</span><span>;</span><span> </span><span>
+</span><span>  </span><span>.</span><span>.</span><span>.</span><span>  </span><span class="cm-comment">// getting input from user</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<ol start="7">
+<li>
+<p>What would be the best or most logical return type to replace <code>/* A */</code>?<br>
+a. <code>int</code><br>
+b. <code>vector&#x3C;string></code><br>
+c. <code>void</code>  *<br>
+d. <code>string</code>  </p>
+</li>
+<li>
+<p>What would be the best or most logical data type to replace <code>/* B */</code>?<br>
+a. <code>string</code><br>
+b. <code>vector&#x3C;string></code><br>
+c. <code>vector&#x3C;string>&#x26;</code>  *<br>
+d. <code>int</code>  </p>
+</li>
+<li>
+<p>What would be the best or most logical return type to replace <code>/* C */</code>?<br>
+a. <code>void</code><br>
+b. <code>double</code><br>
+c. <code>int</code>  *<br>
+d. <code>vector&#x3C;string></code></p>
+</li>
+<li>
+<p>What would be the best or most logical data type to replace <code>/* D */</code>?<br>
+a. <code>const vector&#x3C;string>&#x26;</code>  *<br>
+b. <code>const vector&#x3C;string></code><br>
+c. <code>vector&#x3C;string>&#x26;</code><br>
+d. <code>&#x26;vector&#x3C;string>&#x26;</code>  </p>
+</li>
+<li>
+<p>Which of the following generates a random number between <strong>-32</strong> to <strong>53</strong> inclusive?<br>
+a. <code>(rand() % 53) - 32</code><br>
+b. <code>srand() % 85) - 32</code><br>
+c. <code>(srand() % 86) - 32</code><br>
+d. <code>(rand() % 86) - 32</code>  *  </p>
+</li>
+</ol>
+<p><strong>Use this code for questions 12 and 13</strong></p>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="vector<int> x;
+int y = 0;
+cin >> y;
+while (y >= 0) {
+  x.push_back(y);
+  cin >> y;
+}
+
+if (x.size() > 5) {
+    while (x.size() > 5) {
+      x.pop_back();
+    }
+}
+else if (x.size() == 0) {
+  x.push_back(0);
+}
+"><code class="language-c++"><span class="cm-variable">vector</span><span class="cm-operator">&#x3C;</span><span class="cm-type">int</span><span class="cm-operator">></span><span> </span><span class="cm-variable">x</span><span>;</span><span>
+</span><span class="cm-type">int</span><span> </span><span class="cm-variable">y</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-number">0</span><span>;</span><span>
+</span><span class="cm-variable">cin</span><span> </span><span class="cm-operator">>></span><span> </span><span class="cm-variable">y</span><span>;</span><span>
+</span><span class="cm-keyword">while</span><span> </span><span>(</span><span class="cm-variable">y</span><span> </span><span class="cm-operator">>=</span><span> </span><span class="cm-number">0</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">push_back</span><span>(</span><span class="cm-variable">y</span><span>)</span><span>;</span><span>
+</span><span>  </span><span class="cm-variable">cin</span><span> </span><span class="cm-operator">>></span><span> </span><span class="cm-variable">y</span><span>;</span><span>
+</span><span>}</span><span>
+</span><span>
+</span><span class="cm-keyword">if</span><span> </span><span>(</span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">size</span><span>(</span><span>)</span><span> </span><span class="cm-operator">></span><span> </span><span class="cm-number">5</span><span>)</span><span> </span><span>{</span><span>
+</span><span>    </span><span class="cm-keyword">while</span><span> </span><span>(</span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">size</span><span>(</span><span>)</span><span> </span><span class="cm-operator">></span><span> </span><span class="cm-number">5</span><span>)</span><span> </span><span>{</span><span>
+</span><span>      </span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">pop_back</span><span>(</span><span>)</span><span>;</span><span>
+</span><span>    </span><span>}</span><span>
+</span><span>}</span><span>
+</span><span class="cm-keyword">else</span><span> </span><span class="cm-keyword">if</span><span> </span><span>(</span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">size</span><span>(</span><span>)</span><span> </span><span class="cm-operator">==</span><span> </span><span class="cm-number">0</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">push_back</span><span>(</span><span class="cm-number">0</span><span>)</span><span>;</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<ol start="12">
+<li>
+<p><strong>Assume the inputs "13 2 0 15 32 65 8 -2 76".</strong> What is the final size of vector <code>x</code>?<br>
+a. 0<br>
+b. 5  *<br>
+c. 8<br>
+d. 9  </p>
+</li>
+<li>
+<p><strong>Assume the inputs "-5 54 77".</strong> What is the final size of vector <code>x</code>?<br>
+a. 3<br>
+b. 2<br>
+c. 1  *<br>
+d. 0  </p>
+</li>
+</ol>
+<blockquote>
+<p><strong>BONUS 2:</strong>  </p>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="vector<int> x = {-3, 12, 149, 64, 39};
+for (unsigned i = 0; i < x.size(); i++) {
+  int highest_index = i;
+  for (unsigned j = i; j < x.size(); j++) { 
+     if (x[highest_index] < x[j]) 
+        highest_index = j;
+  }
+
+  int temp = x[i];
+  x[i] = x[highest_index];
+  x[highest_index] = temp;   
+}
+"><code class="language-c++"><span class="cm-variable">vector</span><span class="cm-operator">&#x3C;</span><span class="cm-type">int</span><span class="cm-operator">></span><span> </span><span class="cm-variable">x</span><span> </span><span class="cm-operator">=</span><span> </span><span>{</span><span class="cm-operator">-</span><span class="cm-number">3</span><span>,</span><span> </span><span class="cm-number">12</span><span>,</span><span> </span><span class="cm-number">149</span><span>,</span><span> </span><span class="cm-number">64</span><span>,</span><span> </span><span class="cm-number">39</span><span>}</span><span>;</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span>(</span><span class="cm-type">unsigned</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-number">0</span><span>;</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-operator">&#x3C;</span><span> </span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">size</span><span>(</span><span>)</span><span>;</span><span> </span><span class="cm-variable">i</span><span class="cm-operator">++</span><span>)</span><span> </span><span>{</span><span>
+</span><span>  </span><span class="cm-type">int</span><span> </span><span class="cm-variable">highest_index</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">i</span><span>;</span><span>
+</span><span>  </span><span class="cm-keyword">for</span><span> </span><span>(</span><span class="cm-type">unsigned</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">i</span><span>;</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-operator">&#x3C;</span><span> </span><span class="cm-variable">x</span><span>.</span><span class="cm-variable">size</span><span>(</span><span>)</span><span>;</span><span> </span><span class="cm-variable">j</span><span class="cm-operator">++</span><span>)</span><span> </span><span>{</span><span> </span><span>
+</span><span>     </span><span class="cm-keyword">if</span><span> </span><span>(</span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">highest_index</span><span>]</span><span> </span><span class="cm-operator">&#x3C;</span><span> </span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span> </span><span>
+</span><span>        </span><span class="cm-variable">highest_index</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">j</span><span>;</span><span>
+</span><span>  </span><span>}</span><span>
+</span><span>
+</span><span>  </span><span class="cm-type">int</span><span> </span><span class="cm-variable">temp</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">i</span><span>]</span><span>;</span><span>
+</span><span>  </span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">i</span><span>]</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">highest_index</span><span>]</span><span>;</span><span>
+</span><span>  </span><span class="cm-variable">x</span><span>[</span><span class="cm-variable">highest_index</span><span>]</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-variable">temp</span><span>;</span><span>   </span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<p>What are the contents of vector <code>x</code> after the for loop?<br>
+a. {-3, 12, 149, 64, 39}<br>
+b. {-3, 12, 39, 64, 149}  *<br>
+c. {0, 1, 2, 3, 4}<br>
+d. error  </p>
+</blockquote>
+<ol start="14">
+<li>
+<p>Given the string <code>str = "Chicken Pot Pie"</code>, what is the string after the following operation?<br>
+<code>str.replace(str.find("P"), 3, "Cake");</code><br>
+a. Chicken Pot Cake<br>
+b. Chicken Pot Cakeie<br>
+c. Chicken Cakeot Pie<br>
+d. Chicken Cake Pie  *  </p>
+</li>
+<li>
+<p>Which two <em>functions</em> are necessary to generate a true random number?
+a. srand() and trand()<br>
+b. srand() and time()  *<br>
+c. srand() and ctime()<br>
+d. time() and ctime()    </p>
+</li>
+<li>
+<p>Which of the following functions exist for both vectors <strong>and</strong> strings? (Mark all that are correct).<br>
+a. size()  *<br>
+b. find()<br>
+c. resize()  *<br>
+d. push_back()  *  </p>
+</li>
+</ol>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="double d;
+d = static_cast<double>(11 / 4) % 2;
+"><code class="language-c++"><span class="cm-type">double</span><span> </span><span class="cm-variable">d</span><span>;</span><span>
+</span><span class="cm-variable">d</span><span> </span><span class="cm-operator">=</span><span> </span><span class="cm-keyword">static_cast</span><span class="cm-operator">&#x3C;</span><span class="cm-type">double</span><span class="cm-operator">></span><span>(</span><span class="cm-number">11</span><span> </span><span class="cm-operator">/</span><span> </span><span class="cm-number">4</span><span>)</span><span> </span><span class="cm-operator">%</span><span> </span><span class="cm-number">2</span><span>;</span><span>
+</span></code></pre>
+<ol start="17">
+<li>
+<p>What is the solution to the above code?<br>
+a. 3.0<br>
+b. 2.0<br>
+c. 1.0<br>
+d. error  *  </p>
+</li>
+<li>
+<p>Assume a store is having a unique flash sale. Total prices over $100 or under $20 are 40% off. The customer will also get this sale if the total price equates to exactly $55. Which of the following expression expresses this?<br>
+a. (total &#x3C; 20) || (total > 100) || (total == 55)  *<br>
+b. (total &#x3C;= 20) || (total >= 100) || (total == 55)<br>
+c. (total &#x3C;= 20) &#x26;&#x26; (total >= 100) &#x26;&#x26; (total == 55)<br>
+d. (total &#x3C; 20) &#x26;&#x26; (total > 100) &#x26;&#x26; (total == 55)  </p>
+</li>
+</ol>
+<h3>Free Response (20 points, 10 bonus points)</h3>
+<blockquote>
+<p>20 Minutes</p>
+</blockquote>
+<div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon">ℹ️</span>note</h5></div><div class="admonition-content"><p>For each of the following problems, read the prompts <strong>carefully</strong> (recommended to underline the important parts). <em><strong>No code template will be provided. All code must be written from scratch</strong></em>. Include all necessary parts that are needed for the program to run including headers, <code>main()</code>, and any additional functions. Grading for each question is determined by the equation below. This grading format <strong>IS NOT</strong> reflective of the actual final's, but it gives an idea of how important bug AND error checking is.</p></div></div>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mo><mi>lim</mi><mo>⁡</mo></mo><mrow><mo stretchy="false">[</mo><mi>n</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">]</mo><mo>→</mo><mo stretchy="false">[</mo><mn>2</mn><mo separator="true">,</mo><mn>6</mn><mo stretchy="false">]</mo></mrow></munder><mrow><mn>10</mn><mo>−</mo><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mn>5</mn><mo stretchy="false">)</mo><mo>−</mo><mi>k</mi></mrow><mspace linebreak="newline"></mspace><mi>n</mi><mo>=</mo><mtext>major errors, </mtext><mi>k</mi><mo>=</mo><mtext>bugs/expected diff</mtext></mrow><annotation encoding="application/x-tex">\lim_{[n,k]\rightarrow[2,6]}{10-(n * 5) - k}\\ n = \text{major errors, }k=\text{bugs/expected diff}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.716em;vertical-align:-0.966em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.3089999999999997em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mathnormal mtight">n</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">]</span><span class="mrel mtight">→</span><span class="mopen mtight">[</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">6</span><span class="mclose mtight">]</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.966em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">major errors, </span></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">bugs/expected diff</span></span></span></span></span></span></div>
+<ol>
+<li>Write a program that will take a string of numbers or characters from the user. The string can be one or multiple words. Using the inputted string, calculate and output the user's total word score by summing up the score of each letter or number in the string. Scoring is determined from the following format:<ul>
+<li>Spaces = 0 pts</li>
+<li>Number = number pts</li>
+<li>Characters:<ul>
+<li>a-m = 4 pts</li>
+<li>n-z = 8 pts</li>
+<li>A-M = 10 pts</li>
+<li>N-Z = 20 pts</li>
+</ul></li>
+<li>Symbols = -1 pts</li>
+</ul></li>
+</ol>
+<pre class="cm-s-default CodeMirror language-c++" data-raw="// code here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"><code class="language-c++"><span class="cm-comment">// code here</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span></code></pre>
+<ol start="2">
+<li>Write a program that will take in a string from the user. Parse the characters of the string into a vector of chars. Create a function that will take this vector and find</li>
+</ol>
+<script>function bb(e,t){let n=window.document.getElementById(e);if(null==n){n=window.document.createElement(t),n.id=e,n.style.display="none",window.document.body.appendChild(n)}}
+        appendElementToBody('chart-export-container', 'canvas')
+        appendElementToBody('flowchart-export-container', 'div')
+      </script>
+</body>
+</html>
